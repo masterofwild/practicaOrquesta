@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appwebdeploy
+  labels:
+     estado: "1"
+spec:
+  replicas: 7
+  selector:
+    matchLabels:
+      app: appweb
+  template:
+    metadata:
+      labels:
+        app: appweb
+    spec:
+      containers:
+      - name: appweb
+        image: masterofwild/appweb:v1
+        ports:
+        - containerPort: 80

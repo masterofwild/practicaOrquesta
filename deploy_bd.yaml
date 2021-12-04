@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bddeploy
+  labels:
+     estado: "1"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basedatos
+  template:
+    metadata:
+      labels:
+        app: basedatos
+    spec:
+      containers:
+      - name: basedatos
+        image: masterofwild/base_datos:v1
+        ports:
+        - containerPort: 3306
